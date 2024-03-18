@@ -7,12 +7,12 @@ namespace LABAPP.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<LABAPPDbContext> builder, string connectionString)
         {
-            builder.UseSqlite(connectionString);
+            builder.UseSqlServer(connectionString);
         }
 
         public static void Configure(DbContextOptionsBuilder<LABAPPDbContext> builder, DbConnection connection)
         {
-            builder.UseSqlite(connection);
+            builder.UseSqlServer(connection);
         }
     }
 }

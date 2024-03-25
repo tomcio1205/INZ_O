@@ -3,6 +3,7 @@ using Abp.Zero.EntityFrameworkCore;
 using LABAPP.Authorization.Roles;
 using LABAPP.Authorization.Users;
 using LABAPP.MultiTenancy;
+using LABAPP.JobOffers;
 
 namespace LABAPP.EntityFrameworkCore
 {
@@ -14,5 +15,8 @@ namespace LABAPP.EntityFrameworkCore
             : base(options)
         {
         }
+
+        public DbSet<JobOffer> JobOffers { get; set; }
+
     }
 }

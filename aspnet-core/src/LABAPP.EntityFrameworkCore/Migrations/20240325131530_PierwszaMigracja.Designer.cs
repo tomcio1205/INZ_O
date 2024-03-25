@@ -4,14 +4,16 @@ using LABAPP.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LABAPP.Migrations
 {
     [DbContext(typeof(LABAPPDbContext))]
-    partial class LABAPPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240325131530_PierwszaMigracja")]
+    partial class PierwszaMigracja
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1531,53 +1533,6 @@ namespace LABAPP.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("LABAPP.JobOffers.JobOffer", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ActiveFrom")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ActiveTo")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Body")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContractType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("IsPublished")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Localization")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Position")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Salary")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShortDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedByID");
-
-                    b.ToTable("JOBOFFER");
-                });
-
             modelBuilder.Entity("LABAPP.MultiTenancy.Tenant", b =>
                 {
                     b.Property<int>("Id")
@@ -1857,17 +1812,6 @@ namespace LABAPP.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
-                });
-
-            modelBuilder.Entity("LABAPP.JobOffers.JobOffer", b =>
-                {
-                    b.HasOne("LABAPP.Authorization.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("CreatedByID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LABAPP.MultiTenancy.Tenant", b =>
